@@ -2,46 +2,39 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
- 
-import { AppComponent } from './app.component';
 
-const appRoutes:Routes = [
-  {
-    path: 'posts', 
-    loadChildren: () => import('./Pages/posts/posts-routing.module').then(m => m.PostsModule)
-  },
-  {
-    path: 'comments', 
-    loadChildren: () => import('./Pages/comments/comments-routing.module').then(m => m.CommentsModule)
-  },
-  {
-    path: 'albums', 
-    loadChildren: () => import('./Pages/albums/albums-routing.module').then(m => m.AlbumsModule)
-  },
-  {
-    path: 'photos', 
-    loadChildren: () => import('./Pages/photos/photos-routing.module').then(m => m.PhotosModule)
-  },
-  {
-    path: 'todos', 
-    loadChildren: () => import('./Pages/todos/todos-routing.module').then(m => m.TodosModule)
-  },
-  {
-    path: 'users', 
-    loadChildren: () => import('./Pages/users/users-routing.module').then(m => m.UsersModule)
-  },
-  { path: '', pathMatch: 'full', redirectTo: '' }
+import { AppComponent } from './app.component';
+import { PostsComponent } from './Pages/posts/posts.component';
+import { CommentsComponent } from './Pages/comments/comments.component';
+import { AlbumsComponent } from './Pages/albums/albums.component';
+import { PhotosComponent } from './Pages/photos/photos.component';
+import { TodosComponent } from './Pages/todos/todos.component';
+import { UsersComponent } from './Pages/users/users.component';
+
+const appRoutes: Routes = [
+  { path: 'posts', component: PostsComponent },
+  { path: 'comments', component: CommentsComponent },
+  { path: 'albums', component: AlbumsComponent },
+  { path: 'photos', component: PhotosComponent },
+  { path: 'todos', component: TodosComponent },
+  { path: 'users', component: UsersComponent },
 ]
 @NgModule({
   declarations: [
     AppComponent,
+    PostsComponent,
+    CommentsComponent,
+    AlbumsComponent,
+    PhotosComponent,
+    TodosComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
-  exports:[],
+  exports: [],
   providers: [],
   bootstrap: [AppComponent]
 })
